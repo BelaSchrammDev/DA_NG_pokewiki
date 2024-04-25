@@ -20,82 +20,35 @@ export class PokemonCompount {
     evolutions: string[] = [];
 }
 
-
-export interface PokemonSpeciesListItem {
-    name: string;
-    url: string;
-}
-
-
-export interface Color {
-    name: string;
-    url: string;
-}
-
-export interface EggGroup {
-    name: string;
-    url: string;
-}
-
-export interface Language {
-    name: string;
-    url: string;
-}
-
-export interface Version {
+export interface NameUrlPair {
     name: string;
     url: string;
 }
 
 export interface FlavorTextEntry {
     flavor_text: string;
-    language: Language;
-    version: Version;
+    language: NameUrlPair;
+    version: NameUrlPair;
 }
 
 export interface FormDescription {
     description: string;
-    language: Language;
+    language: NameUrlPair;
 }
 
 export interface Genera {
     genus: string;
-    language: Language;
-}
-
-export interface Generation {
-    name: string;
-    url: string;
-}
-
-export interface GrowthRate {
-    name: string;
-    url: string;
+    language: NameUrlPair;
 }
 
 export interface Name {
-    language: Language;
+    language: NameUrlPair;
     name: string;
-}
-
-export interface Pokedex {
-    name: string;
-    url: string;
 }
 
 export interface PokedexNumber {
     entry_number: number;
-    pokedex: Pokedex;
-}
-
-export interface Shape {
-    name: string;
-    url: string;
-}
-
-export interface PokemonListItem {
-    name: string;
-    url: string;
+    pokedex: NameUrlPair;
 }
 
 export interface Variety {
@@ -106,8 +59,8 @@ export interface Variety {
 export interface PokemonSpecies {
     base_happiness: number;
     capture_rate: number;
-    color: Color;
-    egg_groups: EggGroup[];
+    color: NameUrlPair;
+    egg_groups: NameUrlPair[];
     evolution_chain: { url: string };
     evolves_from_species: { name: string; url: string };
     flavor_text_entries: FlavorTextEntry[];
@@ -115,8 +68,8 @@ export interface PokemonSpecies {
     forms_switchable: boolean;
     gender_rate: number;
     genera: Genera[];
-    generation: Generation;
-    growth_rate: GrowthRate;
+    generation: NameUrlPair;
+    growth_rate: NameUrlPair;
     habitat: any;
     has_gender_differences: boolean;
     hatch_counter: number;
@@ -129,14 +82,8 @@ export interface PokemonSpecies {
     order: number;
     pal_park_encounters: any[];
     pokedex_numbers: PokedexNumber[];
-    shape: Shape;
+    shape: NameUrlPair;
     varieties: Variety[];
-}
-
-
-export interface EvolutionTrigger {
-    name: string;
-    url: string;
 }
 
 export interface EvolutionDetail {
@@ -159,7 +106,7 @@ export interface EvolutionDetail {
     relative_physical_stats: any;
     time_of_day: string;
     trade_species: any;
-    trigger: EvolutionTrigger;
+    trigger: NameUrlPair;
     turn_upside_down: boolean;
 }
 
@@ -189,41 +136,20 @@ export interface PokemonEvolution {
     id: number;
 }
 
-
-export interface Ability {
-    name: string;
-    url: string;
-}
-
-export interface HeldItem {
-    name: string;
-    url: string;
-}
-
 export interface VersionDetail {
     rarity: number;
-    version: Version;
-}
-
-export interface Move {
-    name: string;
-    url: string;
-}
-
-export interface MoveLearnMethod {
-    name: string;
-    url: string;
+    version: NameUrlPair;
 }
 
 export interface VersionGroupDetail {
     level_learned_at: number;
-    move_learn_method: MoveLearnMethod;
-    version_group: Version;
+    move_learn_method: NameUrlPair;
+    version_group: NameUrlPair;
 }
 
 export interface GameIndex {
     game_index: number;
-    version: Version;
+    version: NameUrlPair;
 }
 
 export interface PokemonSprites {
@@ -431,23 +357,23 @@ export interface Type {
 }
 
 export interface AbilityObject {
-    ability: Ability;
+    ability: NameUrlPair;
     is_hidden: boolean;
     slot: number;
 }
 
 export interface HeldItemObject {
-    item: HeldItem;
+    item: NameUrlPair;
     version_details: VersionDetail[];
 }
 
 export interface GameIndexObject {
     game_index: number;
-    version: Version;
+    version: NameUrlPair;
 }
 
 export interface MoveObject {
-    move: Move;
+    move: NameUrlPair;
     version_group_details: VersionGroupDetail[];
 }
 

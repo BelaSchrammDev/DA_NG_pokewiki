@@ -1,42 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
     PokemonCompount,
-    PokemonSpeciesListItem,
-    EvolutionTrigger,
-    EvolutionDetail,
-    EvolvesTo,
-    Chain,
-    PokemonEvolution,
-    Ability,
-    HeldItem,
-    Version,
-    VersionDetail,
-    Move,
-    MoveLearnMethod,
-    VersionGroupDetail,
-    GameIndex,
-    PokemonSprites,
-    Stat,
-    Type,
-    AbilityObject,
-    HeldItemObject,
-    GameIndexObject,
-    MoveObject,
-    Color,
-    EggGroup,
-    Language,
-    FlavorTextEntry,
-    FormDescription,
-    Genera,
-    Generation,
-    GrowthRate,
-    Name,
-    Pokedex,
-    PokedexNumber,
-    Shape,
+    NameUrlPair,
     Pokemon,
-    PokemonListItem,
-    Variety,
+    PokemonEvolution,
+    Stat,
     PokemonSpecies,
 } from '../models/pokemon.models';
 
@@ -46,7 +14,7 @@ import {
 })
 export class FetchpokemonService {
 
-    all_PokeMons: PokemonSpeciesListItem[] = [];
+    all_PokeMons: NameUrlPair[] = [];
     allListLoaded = false;
 
     allPokemonJsons: PokemonCompount[] = [];
@@ -63,8 +31,6 @@ export class FetchpokemonService {
         let responseAsJson = await response.json();
         this.all_PokeMons = responseAsJson.results;
         this.allListLoaded = true;
-        console.log(this.all_PokeMons);
-        console.log(await this.getPokemonObjectByID(this.all_PokeMons[1000]));
     }
 
 
@@ -75,7 +41,7 @@ export class FetchpokemonService {
     * @param {*} pokemonID - pokemonJSON from pokemon-species fetch, only name an url property
     * @returns - pokemonJSON Object
     */
-    async getPokemonObjectByID(pokemonID: PokemonSpeciesListItem) {
+    async getPokemonObjectByID(pokemonID: NameUrlPair) {
         if (!pokemonID) return undefined;
         if (!this.ifPokemonCompountExists(pokemonID.name)) {
             let speciesJSON: PokemonSpecies = await this.fetchAndGetJSON(pokemonID.url);
