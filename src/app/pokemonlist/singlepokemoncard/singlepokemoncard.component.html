@@ -1,4 +1,4 @@
-<div [ngStyle]="{'background': cardBackGround}" class="singlepokemoncard">
+<div (click)="openBigCard()" [ngStyle]="{'background': cardBackGround}" class="singlepokemoncard">
     @if(pokemon) {
         <img src='{{ pokemon.image }}' alt="">
         <h2>{{ pokemon.name }}</h2>

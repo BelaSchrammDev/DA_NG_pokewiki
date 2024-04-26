@@ -2,6 +2,8 @@ import { Component, Input, OnChanges, SimpleChanges, inject } from '@angular/cor
 import { NameUrlPair, PokemonCompount } from '../../shared/models/pokemon.models';
 import { FetchpokemonService } from '../../shared/services/fetchpokemon.service';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { BigpokemoncardComponent } from '../bigpokemoncard/bigpokemoncard.component';
 
 const typeColors = [
   { type: 'normal', color: '#A8A77A' },
@@ -42,11 +44,16 @@ export class SinglepokemoncardComponent implements OnChanges {
   typebadge1Color: string = '#FFFFFF';
   typebadge2Color: string = '#FFFFFF';
 
-  constructor(private fetchPokemonService: FetchpokemonService) {
+  constructor(
+    public dialog: MatDialog,
+    private fetchPokemonService: FetchpokemonService
+  ) {
     this.pokemonID = { name: '', url: 'https://pokeapi.co/api/v2/pokemon-species/1/' };
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(
+    changes: SimpleChanges
+  ): void {
     if (this.pokemonID.name !== '' && changes['pokemonID'].currentValue !== changes['pokemonID'].previousValue) {
       this.fetchPokemonService.getPokemonObjectByID(this.pokemonID).then((pokemon) => {
         this.pokemon = pokemon;
@@ -58,6 +65,21 @@ export class SinglepokemoncardComponent implements OnChanges {
         }
       });
     }
+  }
+
+
+  openBigCard() {
+    if (this.pokemon == undefined) return;
+    const dialogRef = this.dialog.open(
+      BigpokemoncardComponent,
+      {
+        data: this.pokemon,
+        width: '80%',
+        panelClass: 'custom_dialog'
+      }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
 

@@ -38,8 +38,8 @@ export class FetchpokemonService {
     * get the pokemon JSON Object
     * save the loadet pokemons in array, for later use, it is needed
     * 
-    * @param {*} pokemonID - pokemonJSON from pokemon-species fetch, only name an url property
-    * @returns - pokemonJSON Object
+    * @param {NameUrlPair} pokemonID - NameUrlPair
+    * @returns - PokemonCompount Object
     */
     async getPokemonObjectByID(pokemonID: NameUrlPair) {
         if (!pokemonID) return undefined;
@@ -52,6 +52,11 @@ export class FetchpokemonService {
             return newPokemonCompount;
         }
         return this.getPokemonCompountByName(pokemonID.name);
+    }
+
+
+    getPokemonIDByName(pokemonName: string): NameUrlPair | undefined {
+        return this.all_PokeMons.find(pokemon => pokemon.name === pokemonName);
     }
 
 
