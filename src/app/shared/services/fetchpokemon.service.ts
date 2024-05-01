@@ -96,27 +96,9 @@ export class FetchpokemonService {
         let stat_maxvalue = 0;
         for (let index = 0; index < stats.length; index++) {
             const statItem: Stat = stats[index];
-            const statName = statItem.stat['name'];
-            switch (statName) {
-                case 'hp':
-                    newPokemonObject.hp = statItem.base_stat;
-                    break;
-                case 'attack':
-                    newPokemonObject.attack = statItem.base_stat;
-                    break;
-                case 'defense':
-                    newPokemonObject.defense = statItem.base_stat;
-                    break;
-                case 'special-attack':
-                    newPokemonObject['special-attack'] = statItem.base_stat;
-                    break;
-                case 'special-defense':
-                    newPokemonObject['special-defense'] = statItem.base_stat;
-                    break;
-                case 'speed':
-                    newPokemonObject.speed = statItem.base_stat;
-                    break;
-            }
+            let statName = statItem.stat['name'];
+            if (statName.includes('-')) statName = statName.replace('-', '_');
+            (newPokemonObject as any)[statName as keyof PokemonCompount] = statItem.base_stat;
             if (stat_maxvalue < statItem.base_stat) stat_maxvalue = statItem.base_stat;
         }
         newPokemonObject['stat_maxvalue'] = Math.max(100, stat_maxvalue);

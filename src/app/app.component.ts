@@ -11,9 +11,4 @@ import { PokemonlistComponent } from './pokemonlist/pokemonlist.component';
 })
 export class AppComponent {
   title = 'pokewiki';
-
-  constructor() {
-    console.log('App Component created');
-    
-  }
 }

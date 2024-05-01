@@ -1,4 +1,5 @@
 export class PokemonCompount {
+    [key: string]: any;
     name: string = '';
     pokemonID: string = '';
     type1: string = '';
@@ -12,8 +13,8 @@ export class PokemonCompount {
     hp: number = 0;
     attack: number = 0;
     defense: number = 0;
-    'special-attack': number = 0;
-    'special-defense': number = 0;
+    special_attack: number = 0;
+    special_defense: number = 0;
     speed: number = 0;
     stat_maxvalue: number = 0;
     image: string = '';

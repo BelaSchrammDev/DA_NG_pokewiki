@@ -15,44 +15,12 @@
 				<h3>Basics:</h3>
 				<table>
 					<tbody>
-						<tr>
-							<td>Type Slot 1:</td>
-							<td>{{ pokemon.type1 }}</td>
-						</tr>
-						<tr>
-							<td>Type Slot 2:</td>
-							<td>{{ pokemon.type2 }}</td>
-						</tr>
-						<tr>
-							<td>Height:</td>
-							<td>
-								{{ pokemon.height }}
-							</td>
-						</tr>
-						<tr>
-							<td>Weight:</td>
-							<td>
-								{{ pokemon.weight }}
-							</td>
-						</tr>
-						<tr>
-							<td>Base Happines:</td>
-							<td>
-								{{ pokemon.base_happiness }}
-							</td>
-						</tr>
-						<tr>
-							<td>Capturerate:</td>
-							<td>
-								{{ pokemon.capture_rate }}
-							</td>
-						</tr>
-						<tr>
-							<td>Hatchcounter:</td>
-							<td>
-								{{ pokemon.hatch_counter }}
-							</td>
-						</tr>
+						@for (base of basicStatsTypes; track basicStatsTypes) {
+							<tr>
+								<td>{{ base.name }}:</td>
+								<td>{{ pokemon[base.property] }}</td>
+							</tr>
+						}
 					</tbody>
 				</table>
 			</div>
@@ -60,50 +28,14 @@
 				<h3>Stats:</h3>
 				<table>
 					<tbody>
-						<tr class="statbar">
-							<td>HP:</td>
-							<td>
-								<div [ngStyle]="{'width.%':pokemon.hp * 100 / pokemon.stat_maxvalue}">{{ pokemon.hp }}</div>
-							</td>
-						</tr>
-						<tr class="statbar">
-							<td>Attack:</td>
-							<td>
-								<div [ngStyle]="{'width.%':pokemon.attack * 100 / pokemon.stat_maxvalue}">
-									{{ pokemon.attack }}
-								</div>
-							</td>
-						</tr>
-						<tr class="statbar">
-							<td>Sp. Attack:</td>
-							<td>
-								<div [ngStyle]="{'width.%':pokemon['special-attack'] * 100 / pokemon.stat_maxvalue}">
-									{{ pokemon['special-attack'] }}
-								</div>
-							</td>
-						</tr>
-						<tr class="statbar">
-							<td>Defense:</td>
-							<td>
-								<div [ngStyle]="{'width.%':pokemon.defense * 100 / pokemon.stat_maxvalue}">
-									{{ pokemon.defense }}
-								</div>
-							</td>
-						</tr>
-						<tr class="statbar">
-							<td>Sp. Defense:</td>
-							<td>
-								<div [ngStyle]="{'width.%':pokemon['special-defense'] * 100 / pokemon.stat_maxvalue}">
-									{{ pokemon['special-defense'] }}
-								</div>
-							</td>
-						</tr>
-						<tr class="statbar">
-							<td>Speed:</td>
-							<td>
-								<div [ngStyle]="{'width.%':pokemon.speed}">{{ pokemon.speed }}</div>
-							</td>
-						</tr>
+						@for(stat of statsTypes | keyvalue; track statsTypes ) {
+							<tr  class="statbar">
+								<td>{{ stat.value.name }}:</td>
+								<td>
+									<div [ngStyle]="{'width.%':pokemon[stat.value.property] * 100 / pokemon.stat_maxvalue}">{{ pokemon[stat.value.property] }}</div>
+								</td>
+							</tr>
+						}
 					</tbody>
 				</table>
 			</div>
