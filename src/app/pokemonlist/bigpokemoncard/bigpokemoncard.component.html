@@ -42,6 +42,7 @@
 			<div>
 				<h3>Evolutions:</h3>
 				<div class="evolutionlist">
+					<div *ngIf="pokemonEvolutions.length == 0">Loading Evolutions...</div>
 					<div *ngFor="let evolution of pokemonEvolutions; let i = index">
 						<div [ngClass]="{'selectable': pokemon.name !== evolution.name}"
 							(click)="selectEvolution(i)"

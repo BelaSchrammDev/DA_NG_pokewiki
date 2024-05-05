@@ -15,12 +15,15 @@ h3 {
     justify-content: flex-start;
     align-items: flex-start;
     padding: 5px;
-    transition: box-shadow 125ms ease-in-out;
+    transition:
+        box-shadow 125ms ease-in-out,
+        transform 125ms ease-in-out;
 
     &:hover {
         cursor: pointer;
         -webkit-box-shadow: 5px 5px 15px 5px #000000;
         box-shadow: 5px 5px 15px 5px #000000;
+        transform: scale(1.05);
     }
 
     img {
