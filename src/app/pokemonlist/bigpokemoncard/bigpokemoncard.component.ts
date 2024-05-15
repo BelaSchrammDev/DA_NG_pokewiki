@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { PokemonCompount } from '../../shared/models/pokemon.models';
 import { CommonModule } from '@angular/common';
 import { FetchpokemonService } from '../../shared/services/fetchpokemon.service';
+import { EvolutionitemComponent } from './evolutionitem/evolutionitem.component';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { FetchpokemonService } from '../../shared/services/fetchpokemon.service'
     CommonModule,
     MatDialogModule,
     MatButtonModule,
+    EvolutionitemComponent
   ],
   templateUrl: './bigpokemoncard.component.html',
   styleUrl: './bigpokemoncard.component.scss'
@@ -62,23 +64,9 @@ export class BigpokemoncardComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public pokemon: PokemonCompount,
     private fetchPokemonService: FetchpokemonService
-  ) {
-    this.getPokemonEvolutionObjects(fetchPokemonService);
-  }
+  ) { }
 
-  getPokemonEvolutionObjects(fetchPokemonService: FetchpokemonService) {
-    for (let i = 0; i < this.pokemon.evolutions.length; i++) {
-      let pokemonID = fetchPokemonService.getPokemonIDByName(this.pokemon.evolutions[i]);
-      if (pokemonID) {
-        this.fetchPokemonService.getPokemonObjectByID(pokemonID).then((pokemon) => {
-          if (pokemon) this.pokemonEvolutions.push(pokemon);
-        });
-      }
-    }
-  }
-
-  selectEvolution(evolutionIndex: number) {
-    let evolution = this.pokemonEvolutions[evolutionIndex];
+  selectEvolution(evolution: PokemonCompount) {
     if (this.pokemon === evolution) return;
     this.pokemon = evolution;
   }

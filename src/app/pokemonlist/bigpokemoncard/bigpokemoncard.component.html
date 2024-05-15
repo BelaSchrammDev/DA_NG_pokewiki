@@ -4,8 +4,7 @@
 			<img src="{{ pokemon.image }}">
 			<h2 mat-dialog-title>{{ pokemon.name }}</h2>
 			<mat-dialog-actions align="end">
-				<button mat-button
-					mat-dialog-close>
+				<button mat-button mat-dialog-close>
 					Close
 				</button>
 			</mat-dialog-actions>
@@ -16,10 +15,10 @@
 				<table>
 					<tbody>
 						@for (base of basicStatsTypes; track basicStatsTypes) {
-							<tr>
-								<td>{{ base.name }}:</td>
-								<td>{{ pokemon[base.property] }}</td>
-							</tr>
+						<tr>
+							<td>{{ base.name }}:</td>
+							<td>{{ pokemon[base.property] }}</td>
+						</tr>
 						}
 					</tbody>
 				</table>
@@ -29,12 +28,13 @@
 				<table>
 					<tbody>
 						@for(stat of statsTypes | keyvalue; track statsTypes ) {
-							<tr  class="statbar">
-								<td>{{ stat.value.name }}:</td>
-								<td>
-									<div [ngStyle]="{'width.%':pokemon[stat.value.property] * 100 / pokemon.stat_maxvalue}">{{ pokemon[stat.value.property] }}</div>
-								</td>
-							</tr>
+						<tr class="statbar">
+							<td>{{ stat.value.name }}:</td>
+							<td>
+								<div [ngStyle]="{'width.%':pokemon[stat.value.property] * 100 / pokemon.stat_maxvalue}">
+									{{ pokemon[stat.value.property] }}</div>
+							</td>
+						</tr>
 						}
 					</tbody>
 				</table>
@@ -42,17 +42,19 @@
 			<div>
 				<h3>Evolutions:</h3>
 				<div class="evolutionlist">
-					<div *ngIf="pokemonEvolutions.length == 0">Loading Evolutions...</div>
-					<div *ngFor="let evolution of pokemonEvolutions; let i = index">
-						<div [ngClass]="{'selectable': pokemon.name !== evolution.name}"
-							(click)="selectEvolution(i)"
-							class="evolution">
-							<img src="{{ evolution.image }}">
-							<span>
-								{{ evolution.name }}
-							</span>
-						</div>
-					</div>
+					<app-evolutionitem (onClickEvolution)="selectEvolution($event)"
+						[pokemonName]="pokemon['evolutionChain']?.chain?.species?.name"
+						[selectable]="pokemon.pokemonID != pokemon['evolutionChain']?.chain?.species?.name">
+					</app-evolutionitem>
+					@for(evo of pokemon['evolutionChain']?.chain?.evolves_to; track pokemon['evolutionChain']) {
+					<app-evolutionitem (onClickEvolution)="selectEvolution($event)" [pokemonName]="evo.species.name"
+						[marginLeft]="30" [sublevel]="1" [selectable]="pokemon.pokemonID != evo.species.name">
+					</app-evolutionitem>
+					@for(evo2 of evo.evolves_to; track evo2) {
+					<app-evolutionitem (onClickEvolution)="selectEvolution($event)" [pokemonName]="evo2.species.name"
+						[marginLeft]="60" [sublevel]="2" [selectable]="pokemon.pokemonID != evo2.species.name">
+					</app-evolutionitem>
+					}}
 				</div>
 			</div>
 		</div>

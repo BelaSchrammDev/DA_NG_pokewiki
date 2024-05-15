@@ -18,7 +18,13 @@ export class PokemonCompount {
     speed: number = 0;
     stat_maxvalue: number = 0;
     image: string = '';
-    evolutions: string[] = [];
+    evolutionChain: PokemonEvolution | undefined = undefined;
+}
+
+export class EvolutionTree {
+    [key: string]: any;
+    name: string = '';
+    evolves_to: EvolutionTree[] = [];
 }
 
 export interface NameUrlPair {
@@ -63,7 +69,7 @@ export interface PokemonSpecies {
     color: NameUrlPair;
     egg_groups: NameUrlPair[];
     evolution_chain: { url: string };
-    evolves_from_species: { name: string; url: string };
+    evolves_from_species: NameUrlPair;
     flavor_text_entries: FlavorTextEntry[];
     form_descriptions: FormDescription[];
     forms_switchable: boolean;
@@ -90,10 +96,7 @@ export interface PokemonSpecies {
 export interface EvolutionDetail {
     gender: any;
     held_item: any;
-    item: {
-        name: string;
-        url: string;
-    } | null;
+    item: NameUrlPair | null;
     known_move: any;
     known_move_type: any;
     location: any;
@@ -125,10 +128,7 @@ export interface Chain {
     evolution_details: EvolutionDetail[];
     evolves_to: EvolvesTo[];
     is_baby: boolean;
-    species: {
-        name: string;
-        url: string;
-    };
+    species: NameUrlPair;
 }
 
 export interface PokemonEvolution {
@@ -343,18 +343,12 @@ export interface PokemonSprites {
 export interface Stat {
     base_stat: number;
     effort: number;
-    stat: {
-        name: string;
-        url: string;
-    };
+    stat: NameUrlPair;
 }
 
 export interface Type {
     slot: number;
-    type: {
-        name: string;
-        url: string;
-    };
+    type: NameUrlPair;
 }
 
 export interface AbilityObject {
@@ -381,10 +375,7 @@ export interface MoveObject {
 export interface Pokemon {
     abilities: AbilityObject[];
     base_experience: number;
-    forms: {
-        name: string;
-        url: string;
-    }[];
+    forms: NameUrlPair[];
     game_indices: GameIndexObject[];
     height: number;
     held_items: HeldItemObject[];
@@ -396,10 +387,7 @@ export interface Pokemon {
     order: number;
     past_abilities: any[]; // You may define a proper interface for this if needed
     past_types: any[]; // You may define a proper interface for this if needed
-    species: {
-        name: string;
-        url: string;
-    };
+    species: NameUrlPair;
     sprites: PokemonSprites;
     stats: Stat[];
     types: Type[];

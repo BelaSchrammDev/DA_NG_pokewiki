@@ -90,26 +90,3 @@ mat-dialog-content {
     gap: 10px;
 }
 
-.evolution {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    border-radius: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-
-    >img {
-        height: 30px;
-        width: 30px;
-    }
-}
-
-.selectable {
-    cursor: pointer;
-    background-color: lightgray;
-
-    &:hover {
-        background-color: lightblue;
-    }
-}

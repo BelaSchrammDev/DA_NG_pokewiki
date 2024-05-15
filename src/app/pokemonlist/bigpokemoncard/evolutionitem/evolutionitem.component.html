@@ -1,0 +1,16 @@
+<section>
+    @if(sublevel > 0) {
+    <i [style.margin-left.px]="marginLeft" class="material-icons">subdirectory_arrow_right</i>
+    }
+    <div (click)="clickEvolution()" [ngClass]="{'selectable': selectable}" class="evolution">
+        @if(evolution && evolution.image) {
+        <img src="{{ evolution.image }}">
+        <span>
+            {{ evolution.name }}
+        </span>
+        }
+        @else {
+        <span>Loading...</span>
+        }
+    </div>
+</section>
