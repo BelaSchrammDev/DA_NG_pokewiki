@@ -1,31 +1,61 @@
-section {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 50px;
-}
+    $evolution-height: 50px;
+    $evolution-image-size: 40px;
+    $evolution-padding-side: 20px;
 
-.evolution {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    border-radius: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    gap: 20px;
-
-    >img {
-        height: 40px;
-        width: 40px;
+    section {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 50px;
     }
-}
 
-.selectable {
-    cursor: pointer;
-    background-color: lightgray;
+    .evolution {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        border-radius: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        gap: 10px;
 
-    &:hover {
-        background-color: lightblue;
+        >img {
+            height: 30px;
+            width: 30px;
+        }
+
+        >span {
+            font-size: 16px;
+        }
     }
-}
+
+    .selectable {
+        cursor: pointer;
+        background-color: lightgray;
+
+        &:hover {
+            background-color: lightblue;
+        }
+    }
+
+    @media (max-width: 600px) {
+        section {
+            height: 30px;
+        }
+
+        .evolution {
+            height: 30px;
+            padding-left: 10px;
+            padding-right: 10px;
+            gap: 5px;
+
+            >img {
+                height: 20px;
+                width: 20px;
+            }
+
+            >span {
+                font-size: 12px;
+            }
+        }
+    }

@@ -2,17 +2,34 @@ mat-dialog-content {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
     padding: 0;
     height: 100vh;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: lightgray;
+        border-radius: 2.5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: white;
+    }
+
+    &::-webkit-scrollbar-button {
+        display: block;
+        height: 10px;
+    }
 
     * {
         color: black;
     }
 
 }
-
 
 .headline {
     display: flex;
@@ -90,3 +107,54 @@ mat-dialog-content {
     gap: 10px;
 }
 
+@media (max-width: 900px) {
+    .stat_content {
+        flex-direction: column;
+
+        >div:not(:last-child) {
+            border-bottom: 1px solid black;
+        }
+    }
+}
+
+
+@media (max-width: 600px) {
+    mat-dialog-content {
+        padding: 10px !important;
+    }
+
+    span.mdc-button__label {
+        font-size: 100px !important;
+    }
+
+    .mat-mdc-button {
+        font-size: 10px !important;
+    }
+
+    .stat_content {
+        >div {
+            tr {
+                height: 30px;
+            }
+        }
+    }
+
+    .statbar {
+        td:first-child {
+            height: 30px;
+        }
+    }
+
+    h2 {
+        font-size: 16px !important;
+        padding: 5px !important;
+    }
+
+    .headline {
+        >img {
+            width: 50px;
+            height: 50px;
+            margin: unset;
+        }
+    }
+}

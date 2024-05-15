@@ -48,11 +48,11 @@
 					</app-evolutionitem>
 					@for(evo of pokemon['evolutionChain']?.chain?.evolves_to; track pokemon['evolutionChain']) {
 					<app-evolutionitem (onClickEvolution)="selectEvolution($event)" [pokemonName]="evo.species.name"
-						[marginLeft]="30" [sublevel]="1" [selectable]="pokemon.pokemonID != evo.species.name">
+						[marginLeft]="10" [sublevel]="1" [selectable]="pokemon.pokemonID != evo.species.name">
 					</app-evolutionitem>
 					@for(evo2 of evo.evolves_to; track evo2) {
 					<app-evolutionitem (onClickEvolution)="selectEvolution($event)" [pokemonName]="evo2.species.name"
-						[marginLeft]="60" [sublevel]="2" [selectable]="pokemon.pokemonID != evo2.species.name">
+						[marginLeft]="20" [sublevel]="2" [selectable]="pokemon.pokemonID != evo2.species.name">
 					</app-evolutionitem>
 					}}
 				</div>
