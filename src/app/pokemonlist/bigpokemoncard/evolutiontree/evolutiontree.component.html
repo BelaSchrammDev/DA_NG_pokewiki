@@ -1,0 +1,19 @@
+<div class="evolutionlist">
+    @if(evolutionTree) {
+    <app-evolutionitem (onClickEvolution)="selectPokemeon($event)" [pokemonID]="evolutionTree.chain.species.name"
+        [selectable]="currentPokemonID != evolutionTree.chain.species.name">
+    </app-evolutionitem>
+    @for(evo of evolutionTree.chain.evolves_to; track evolutionTree) {
+    <app-evolutionitem (onClickEvolution)="selectPokemeon($event)" [pokemonID]="evo.species.name" [marginLeft]="10"
+        [sublevel]="1" [selectable]="currentPokemonID != evo.species.name">
+    </app-evolutionitem>
+    @for(evo2 of evo.evolves_to; track evo2) {
+    <app-evolutionitem (onClickEvolution)="selectPokemeon($event)" [pokemonID]="evo2.species.name" [marginLeft]="20"
+        [sublevel]="2" [selectable]="currentPokemonID != evo2.species.name">
+    </app-evolutionitem>
+    }}
+    }
+    @else {
+    <span>Loading...</span>
+    }
+</div>

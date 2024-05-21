@@ -2,11 +2,11 @@
     @if(sublevel > 0) {
     <i [style.margin-left.px]="marginLeft" class="material-icons">subdirectory_arrow_right</i>
     }
-    <div (click)="clickEvolution()" [ngClass]="{'selectable': selectable}" class="evolution">
-        @if(evolution && evolution.image) {
-        <img src="{{ evolution.image }}">
+    <div (click)="clickPokemon()" [ngClass]="{'selectable': selectable}" class="evolution">
+        @if(pokemon) {
+        <img src="{{ pokemon.image }}">
         <span>
-            {{ evolution.name }}
+            {{ pokemon.name }}
         </span>
         }
         @else {

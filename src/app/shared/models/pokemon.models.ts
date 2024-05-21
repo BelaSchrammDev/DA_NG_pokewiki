@@ -18,7 +18,7 @@ export class PokemonCompount {
     speed: number = 0;
     stat_maxvalue: number = 0;
     image: string = '';
-    evolutionChain: PokemonEvolution | undefined = undefined;
+    evolutionTreeID: number | undefined = undefined;
 }
 
 export class EvolutionTree {

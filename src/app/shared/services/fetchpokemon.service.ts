@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {
     PokemonCompount,
     NameUrlPair,
@@ -20,11 +20,9 @@ export class FetchpokemonService {
     allPokemonJsons: PokemonCompount[] = [];
     pokemonEvotutions: PokemonEvolution[] = [];
 
-
     constructor() {
         this.loadPokemonList();
     }
-
 
     async loadPokemonList() {
         const url = `https://pokeapi.co/api/v2/pokemon-species?limit=100000&offset=0`;
@@ -59,22 +57,27 @@ export class FetchpokemonService {
             this.saveEvolutionObject(evolutionJSON);
             return newPokemonCompount;
         }
-        return this.getPokemonCompountByName(pokemonID.name);
+        return this.getPokemonCompountByIDName(pokemonID.name);
     }
 
 
-    getPokemonIDByName(pokemonName: string): NameUrlPair | undefined {
-        return this.all_PokeMons.find(pokemon => pokemon.name === pokemonName);
+    getEvolutionTreeByID(evolutionID: number): PokemonEvolution | undefined {
+        return this.pokemonEvotutions.find(evo => evo.id === evolutionID);
     }
 
 
-    getPokemonCompountByName(pokemonName: string): PokemonCompount | undefined {
-        return this.allPokemonJsons.find(pokemon => pokemon.name === pokemonName);
+    getPokemonNameUrlPairByID(pokemonID: string): NameUrlPair | undefined {
+        return this.all_PokeMons.find(pokemon => pokemon.name === pokemonID);
     }
 
 
-    ifPokemonCompountExists(pokemonName: string): boolean {
-        return this.allPokemonJsons.some(pokemon => pokemon.name === pokemonName);
+    getPokemonCompountByIDName(pokemonName: string): PokemonCompount | undefined {
+        return this.allPokemonJsons.find(pokemon => pokemon.pokemonID === pokemonName);
+    }
+
+
+    ifPokemonCompountExists(pokemonIDName: string): boolean {
+        return this.allPokemonJsons.some(pokemon => pokemon.pokemonID === pokemonIDName);
     }
 
 
@@ -94,7 +97,7 @@ export class FetchpokemonService {
         this.copyPropertys(newPokemonObject, pokemon, ['height', 'weight']);
         this.copyStats(newPokemonObject, pokemon.stats);
         newPokemonObject.image = this.getPokemonImageUrlOrDefault(pokemon);
-        newPokemonObject.evolutionChain = evolution;
+        newPokemonObject.evolutionTreeID = evolution.id;
         return newPokemonObject;
     }
 
@@ -117,12 +120,6 @@ export class FetchpokemonService {
     getPokemonImageUrlOrDefault(pokemon: Pokemon) {
         const imgURL = pokemon['sprites']['other']['official-artwork']['front_default'];
         return imgURL ? imgURL : './img/pokemon.png';
-    }
-
-
-    getPokemonImageByName(pokemonName: string) {
-        const pokemon = this.getPokemonCompountByName(pokemonName);
-        return pokemon ? pokemon.image : './img/pokemon.png';
     }
 
 

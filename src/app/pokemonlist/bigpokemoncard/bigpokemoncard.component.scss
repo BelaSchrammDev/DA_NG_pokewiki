@@ -99,14 +99,6 @@ mat-dialog-content {
     }
 }
 
-.evolutionlist {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 10px;
-}
-
 @media (max-width: 900px) {
     .stat_content {
         flex-direction: column;
