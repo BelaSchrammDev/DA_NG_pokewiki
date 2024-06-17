@@ -1,4 +1,30 @@
+@import './../../styles.scss';
+
 section {
-    background-color: rgb(23, 62, 65);
+    max-width: $main-content-width;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     color: rgb(119, 175, 179);
+
+    .title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        >img {
+            width: 50px;
+            height: 50px;
+            margin: 5px 10px 5px 5px;
+        }
+
+        >h1 {
+            margin: 0;
+            padding: 0;
+        }
+    }
 }

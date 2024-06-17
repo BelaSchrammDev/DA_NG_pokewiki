@@ -17,6 +17,8 @@ export class FetchpokemonService {
     all_PokeMons: NameUrlPair[] = [];
     allListLoaded = false;
 
+    listedPokemons: NameUrlPair[] = [];
+
     allPokemonJsons: PokemonCompount[] = [];
     pokemonEvotutions: PokemonEvolution[] = [];
 
@@ -29,13 +31,23 @@ export class FetchpokemonService {
         let response = await fetch(url);
         let responseAsJson = await response.json();
         this.all_PokeMons = responseAsJson.results;
+        this.setListedPokemonsToAll();
         this.allListLoaded = true;
     }
 
 
-    saveEvolutionObject(evolution: PokemonEvolution) {
-        if (this.pokemonEvotutions.find(evo => evo.id === evolution.id)) return;
-        this.pokemonEvotutions.push(evolution);
+    setListedPokemonsToAll() {
+        this.listedPokemons = this.all_PokeMons;
+    }
+
+
+    setListedPokemonsToFiltered(filter: string) {
+        this.listedPokemons = this.all_PokeMons.filter(pokemon => pokemon.name.includes(filter));
+    }
+
+
+    isFiltered() {
+        return this.listedPokemons.length < this.all_PokeMons.length;
     }
 
 
@@ -58,6 +70,12 @@ export class FetchpokemonService {
             return newPokemonCompount;
         }
         return this.getPokemonCompountByIDName(pokemonID.name);
+    }
+
+
+    saveEvolutionObject(evolution: PokemonEvolution) {
+        if (this.pokemonEvotutions.find(evo => evo.id === evolution.id)) return;
+        this.pokemonEvotutions.push(evolution);
     }
 
 
@@ -84,6 +102,10 @@ export class FetchpokemonService {
     async fetchAndGetJSON(url: string) {
         let response = await fetch(url);
         return await response.json();
+    }
+
+    getPokemonCountByName(name: string): number {
+        return this.all_PokeMons.filter(pokemon => pokemon.name.includes(name)).length;
     }
 
 

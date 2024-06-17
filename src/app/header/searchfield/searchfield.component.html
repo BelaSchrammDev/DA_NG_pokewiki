@@ -1,0 +1,9 @@
+<section>
+    <div>
+        <input [(ngModel)]="searchstring" type="text" placeholder="Search" />
+        <button [disabled]="searchbuttonDisabled" [style.right.px]="searchstring == '' ? 100 : 0" class="go"
+            (click)="goFiltered()">{{ searchbutton
+            }}</button>
+        <button class="all" [style.left.px]="pokeData.isFiltered() ? 0 : 30" (click)="showAll()">all</button>
+    </div>
+</section>
