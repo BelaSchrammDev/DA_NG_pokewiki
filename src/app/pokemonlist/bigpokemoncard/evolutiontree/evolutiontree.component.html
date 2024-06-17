@@ -4,11 +4,11 @@
         [selectable]="currentPokemonID != evolutionTree.chain.species.name">
     </app-evolutionitem>
     @for(evo of evolutionTree.chain.evolves_to; track evolutionTree) {
-    <app-evolutionitem (onClickEvolution)="selectPokemeon($event)" [pokemonID]="evo.species.name" [marginLeft]="10"
+    <app-evolutionitem (onClickEvolution)="selectPokemeon($event)" [pokemonID]="evo.species.name" [marginLeft]="20"
         [sublevel]="1" [selectable]="currentPokemonID != evo.species.name">
     </app-evolutionitem>
     @for(evo2 of evo.evolves_to; track evo2) {
-    <app-evolutionitem (onClickEvolution)="selectPokemeon($event)" [pokemonID]="evo2.species.name" [marginLeft]="20"
+    <app-evolutionitem (onClickEvolution)="selectPokemeon($event)" [pokemonID]="evo2.species.name" [marginLeft]="40"
         [sublevel]="2" [selectable]="currentPokemonID != evo2.species.name">
     </app-evolutionitem>
     }}

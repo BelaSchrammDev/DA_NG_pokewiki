@@ -1,14 +1,14 @@
 <section>
+	<div class="headline" mat-dialog-title>
+		<img src="{{ pokemon.image }}">
+		<h2 mat-dialog-title>{{ pokemon.name }}</h2>
+		<mat-dialog-actions align="end">
+			<button mat-button mat-dialog-close>
+				Close
+			</button>
+		</mat-dialog-actions>
+	</div>
 	<mat-dialog-content class="mat-typography">
-		<div class="headline">
-			<img src="{{ pokemon.image }}">
-			<h2 mat-dialog-title>{{ pokemon.name }}</h2>
-			<mat-dialog-actions align="end">
-				<button mat-button mat-dialog-close>
-					Close
-				</button>
-			</mat-dialog-actions>
-		</div>
 		<div class="stat_content">
 			<div>
 				<h3>Basics:</h3>

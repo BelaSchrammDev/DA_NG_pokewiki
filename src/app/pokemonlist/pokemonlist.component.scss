@@ -1,6 +1,7 @@
 section {
 
     .pokemonlist {
+        scroll-snap-type: y mandatory;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;

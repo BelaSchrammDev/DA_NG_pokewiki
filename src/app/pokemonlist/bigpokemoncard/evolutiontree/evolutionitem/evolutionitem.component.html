@@ -1,6 +1,6 @@
 <section>
     @if(sublevel > 0) {
-    <i [style.margin-left.px]="marginLeft" class="material-icons">subdirectory_arrow_right</i>
+    <img [style.margin-left.px]="marginLeft" class="evoarrow" src="./assets/evoarrow.svg" alt="">
     }
     <div (click)="clickPokemon()" [ngClass]="{'selectable': selectable}" class="evolution">
         @if(pokemon) {

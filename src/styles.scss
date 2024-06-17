@@ -1,9 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+$main-bg-color: rgb(24, 88, 92);
 
-html,
-body {
-    height: 100%;
-}
 
 body {
     background-color: rgb(24, 88, 92);
@@ -16,4 +13,12 @@ body {
         border-radius: 20px;
         overflow: hidden;
     }
+}
+
+app-header {
+    display: block;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: $main-bg-color;
 }

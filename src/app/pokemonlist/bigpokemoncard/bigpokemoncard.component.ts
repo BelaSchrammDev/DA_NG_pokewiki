@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
-import { EvolutionTree, PokemonCompount } from '../../shared/models/pokemon.models';
+import { PokemonCompount } from '../../shared/models/pokemon.models';
 import { CommonModule } from '@angular/common';
 import { FetchpokemonService } from '../../shared/services/fetchpokemon.service';
 import { EvolutiontreeComponent } from './evolutiontree/evolutiontree.component';

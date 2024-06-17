@@ -1,12 +1,11 @@
 <section>
-	<h2>Pokemon List</h2>
     <div class="pokemonlist">
         @if(pokeData.allListLoaded) {
-            @for(pokemon of pokeData.all_PokeMons | slice:0:maxPokemon; track pokemon.name) {
-                <app-singlepokemoncard [pokemonID]="pokemon"></app-singlepokemoncard>
-            }
+        @for(pokemon of pokeData.all_PokeMons | slice:0:maxPokemon; track pokemon.name) {
+        <app-singlepokemoncard [pokemonID]="pokemon"></app-singlepokemoncard>
+        }
         } @else {
-            <p>Loading...</p>
+        <p>Loading...</p>
         }
     </div>
 </section>
