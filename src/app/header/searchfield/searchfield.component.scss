@@ -3,68 +3,61 @@
 section {
     max-width: 250px;
     min-width: 250px;
-    height: 40px;
+    min-height: 40px;
 
-    div {
-        position: relative;
-        left: 40px;
+    position: relative;
+    height: 100%;
+
+    >input {
+        z-index: 10;
+        position: absolute;
+        left: 30px;
         right: 100px;
+        top: 0;
+        bottom: 0;
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        font-size: 1.2em;
+        outline: none;
+    }
+
+    >button {
+        position: absolute;
+        background-color: wheat;
+        color: black;
+        border: none;
+        padding: 9px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
         height: 100%;
+    }
 
+    >button:hover {
+        background-color: darkorange;
+    }
 
-        >input {
-            z-index: 10;
-            position: absolute;
-            left: 30px;
-            right: 100px;
-            top: 0;
-            bottom: 0;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 10px;
-            border: 1px solid gray;
-            border-radius: 5px;
-            font-size: 1.2em;
-            outline: none;
-        }
+    >button:active {
+        background-color: orange;
+    }
 
-        >button {
-            position: absolute;
-            background-color: wheat;
-            color: black;
-            border: none;
-            padding: 9px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            height: 100%;
-        }
+    >button:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+    }
 
-        >button:hover {
-            background-color: darkorange;
-        }
+    >button.go {
+        right: 100px;
+        border-radius: 0 5000px 5000px 0;
+        min-width: 105px;
+        text-align: right;
+    }
 
-        >button:active {
-            background-color: orange;
-        }
-
-        >button:disabled {
-            background-color: gray;
-            cursor: not-allowed;
-        }
-
-        >button.go {
-            right: 100px;
-            border-radius: 0 5000px 5000px 0;
-            min-width: 105px;
-            text-align: right;
-        }
-
-        >button.all {
-            left: 30px;
-            border-radius: 5000px 0 0 5000px;
-            min-width: 45px;
-            text-align: left;
-        }
+    >button.all {
+        left: 30px;
+        border-radius: 5000px 0 0 5000px;
+        min-width: 45px;
+        text-align: left;
     }
 
 }

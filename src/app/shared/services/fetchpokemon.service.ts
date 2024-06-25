@@ -42,7 +42,8 @@ export class FetchpokemonService {
 
 
     setListedPokemonsToFiltered(filter: string) {
-        this.listedPokemons = this.all_PokeMons.filter(pokemon => pokemon.name.includes(filter));
+        const filterLowerCase = filter.toLowerCase();
+        this.listedPokemons = this.all_PokeMons.filter(pokemon => pokemon.name.toLowerCase().includes(filterLowerCase));
     }
 
 
@@ -105,7 +106,15 @@ export class FetchpokemonService {
     }
 
     getPokemonCountByName(name: string): number {
-        return this.all_PokeMons.filter(pokemon => pokemon.name.includes(name)).length;
+        let count = 0;
+        const nameLower = name.toLowerCase();
+        for (let i = 0; i < this.all_PokeMons.length; i++) {
+            const pokemonLowerName = this.all_PokeMons[i].name.toLowerCase();
+            if (pokemonLowerName.includes(nameLower)) {
+                count++;
+            }
+        }
+        return count;
     }
 
 
