@@ -5,7 +5,7 @@ mat-dialog-content {
     justify-content: flex-start;
     gap: 20px;
     padding: 0;
-    height: 100vh;
+    height: fit-content;
 
     &::-webkit-scrollbar {
         width: 5px;
@@ -31,6 +31,8 @@ mat-dialog-content {
 
 }
 
+section {}
+
 .headline {
     display: flex;
     flex-direction: row;
@@ -39,8 +41,10 @@ mat-dialog-content {
     border-bottom: 2px solid black;
 
     >img {
-        width: 150px;
-        height: 150px;
+        width: 10vh;
+        height: 10vh;
+        max-width: 150px;
+        max-height: 150px;
         margin-right: 10px;
     }
 
@@ -89,8 +93,10 @@ mat-dialog-content {
 
     td:last-child {
         >div {
-            height: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
             background-color: lightgreen;
             border: 1px solid rgb(106, 172, 106);
             border-radius: 5px;
@@ -135,7 +141,12 @@ mat-dialog-content {
         td:first-child {
             height: 30px;
         }
-    }
+        td:last-child {
+            >div {
+                height: 25px;
+            }
+        }
+        }
 
     h2 {
         font-size: 16px !important;

@@ -51,9 +51,7 @@ export class SinglepokemoncardComponent implements OnChanges {
     this.pokemonID = { name: '', url: 'https://pokeapi.co/api/v2/pokemon-species/1/' };
   }
 
-  ngOnChanges(
-    changes: SimpleChanges
-  ): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.pokemonID.name !== '' && changes['pokemonID'].currentValue !== changes['pokemonID'].previousValue) {
       this.fetchPokemonService.getPokemonObjectByID(this.pokemonID).then((pokemon) => {
         this.pokemon = pokemon;

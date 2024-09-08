@@ -1,14 +1,20 @@
-<div (click)="openBigCard()" [ngStyle]="{'background': cardBackGround}" class="singlepokemoncard">
+<div (click)="openBigCard()" [ngStyle]="{'background': cardBackGround}"
+    class="singlepokemoncard">
     @if(pokemon) {
+    <div class="pokemon-content">
         <img src='{{ pokemon.image }}' alt="">
         <h2>{{ pokemon.name }}</h2>
         <hr>
         <h3>Types:</h3>
         <ul>
             <li [style.backgroundColor]="typebadge1Color" class="typebadge">{{ pokemon.type1 }}</li>
-            <li *ngIf="pokemon.type2 !== '---'" [style.backgroundColor]="typebadge2Color" class="typebadge">{{ pokemon.type2 }}</li>
+            <li *ngIf="pokemon.type2 !== '---'" [style.backgroundColor]="typebadge2Color" class="typebadge">{{
+                pokemon.type2
+                }}</li>
         </ul>
+    </div>
     } @else {
-        <p>Loading...</p>
+    <div class="loading-placeholder">
+    </div>
     }
 </div>
